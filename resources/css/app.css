@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.iti{
+    width: 100% !important;
+}
+
+@media (min-width: 520px) {
+    .xs\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .xs\:col-span-1 {
+        grid-column: span 1 / span 1;
+    }
+}
+
+.btn-primary {
+    @apply font-bold md:gap-2  shadow-md bg-primary text-white rounded-full border;
+}
+
+.btn-secondary{
+    @apply font-bold md:gap-2 bg-gradient-to-t from-teal-600 to-teal-500 shadow-md dark:bg-transparent text-white rounded-full border dark:text-white;
+}
+
+.feature_right::after,
+.feature_right::before{
+    content: "";
+    position: absolute;
+    transform: scale(1.2);
+    border-radius: 100%;
+}
+.feature_right::after{
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: -50px;
+    background-color: #1b2d29;
+}
+
+.feature_right::before{
+    z-index: 20;
+    height: 80%;
+    width: 80%;
+    top: 40px;
+    right: -80px;
+    background-color: #00150f;
+    transform: scale(1.2);
+}
+
+.service_card{
+    transition: all .2s linear;
+    
+}
+.service_card:hover{
+    border: 2px solid #00d094;
+    transform: translateY(-20px) !important;
+}
+.service_card:hover h5{
+    color: #00d094;
+}
