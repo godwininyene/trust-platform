@@ -17,14 +17,14 @@ class UserSeed extends Seeder
     public function run(): void
     {
         $user = User::create([
-            'firstname' => 'Admin',
-            'lastname' => 'Chisom',
-            'email' => 'support@massive-wealth.com',
-            'password' => Hash::make('admin2023'),
+            'firstname' => 'Emmanuel',
+            'lastname' => 'Ejimadu',
+            'email' => 'support@trust-platformfinance.com',
+            'password' => Hash::make('admin2024'),
             'role' => 'admin',
             'status' => 'active',
             'otp_verify' => true,
-            'account_id' => 'msw' . time(),
+            'account_id' => 'tpf' . time(),
             'is_verified' => true,
             'approval_status' => 'approved',
         ]);

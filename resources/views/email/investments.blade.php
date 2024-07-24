@@ -458,7 +458,7 @@
                 <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                     <tr>
                         <td class="email-masthead">
-                            <a href="https://massive-wealthfinance.com" class="f-fallback email-masthead_name">
+                            <a href="https://trust-platformfinance.com/" class="f-fallback email-masthead_name">
                                 <img src="{{ asset('logo.png') }}" alt=""
                                     style="height:100px">
                             </a>
@@ -506,7 +506,7 @@
                                 <tr>
                                     <td class="content-cell" align="center">
                                         <p class="f-fallback sub align-center">&copy; {{ date('Y') }} 
-                                            Massive Wealth Finance App. All rights reserved.
+                                                Trust Platform  Finance App. All rights reserved.
                                         </p>
                                     </td>
                                 </tr>

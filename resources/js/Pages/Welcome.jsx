@@ -660,7 +660,7 @@ export default function Welcome({ auth }) {
             {/* Testimonial Content Start */}
              <section className='py-12 lg:py-24 bg-dark-light px-4 lg:px-0'>
                 <div className='max-w-6xl mx-auto text-white'  data-aos="fade-up" data-aos-delay="150">
-                    <h2 className='uppercase text-3xl md:text-4xl font-bold'>Hear From <span className='text-primary'>Our Clients</span></h2>
+                    <h2 className='uppercase text-3xl md:text-4xl font-bold'>Hear From <span className='text-primary'>Our Investors</span></h2>
                     <p className='text-xl mt-3 mb-10 md:mb-20 text-text-dark max-w-2xl'>
                         We enjoy engaging with our clients to learn about their experiences and find ways to improve.
                     </p>

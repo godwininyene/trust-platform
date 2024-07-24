@@ -44,7 +44,7 @@ export default function Welcome({ auth }) {
             <section className='py-12 lg:py-36  px-4 bg-dark-light overflow-hidden lg:px-0'>
         	    <div className="max-w-[1110px] mx-auto">
                     <div className='mb-16 text-center'>
-                        <h2 className='text-4xl font-bold dark:text-white'>Frequetly Asked Questions</h2>
+                        <h2 className='text-4xl font-bold text-white'>Frequetly Asked Questions</h2>
                     </div>
 
                     {/* FAQs Start */}
@@ -53,7 +53,7 @@ export default function Welcome({ auth }) {
                             questionsList.map((question, i)=>(
                             <div key={question.id} className={`${i==0 ? 'border-b-0' : 'border-b'} border-b-slate-400 border-t border-t-slate-300 px-4 bg-dark rounded-md`} onClick={()=>toggleID(question.id)}>
                                 <div className='py-5 relative cursor-pointer flex justify-between w-full'>
-                                    <h3 className='text-xl font-medium dark:text-white flex-grow'>{question.question}</h3>
+                                    <h3 className='text-xl font-medium text-white flex-grow'>{question.question}</h3>
                                     {
                                         (ID !== question.id)?(
                                             <MdAddCircleOutline className='h-8 w-8 text-primary m-auto'/>

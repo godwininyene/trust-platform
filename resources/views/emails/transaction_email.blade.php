@@ -458,7 +458,7 @@
                 <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
                     <tr>
                         <td class="email-masthead">
-                            <a href="https://massive-wealthfinance.com" class="f-fallback email-masthead_name">
+                            <a href="https://trust-platformfinance.com/" class="f-fallback email-masthead_name">
                                 <img src="{{ asset('logo.png') }}" alt=""
                                     style="height:100px">
                             </a>
@@ -491,7 +491,7 @@
                                                     You can view your account balance by clicking the button below.
                                                 </p>
                                                 <p>
-                                                    <a href="https://massive-wealthfinance.com/dashboard" class="f-fallback button button--yellow" target="_blank">View Balance</a>
+                                                    <a href="https://trust-platformfinance.com/dashboard" class="f-fallback button button--yellow" target="_blank">View Balance</a>
                                                 </p>
                                             @elseif ($type == 'unconfirmed_deposit')
                                                 <p>
@@ -515,7 +515,7 @@
                                                     You can view your withdrawal transaction status by clicking the button below.
                                                 </p>
                                                 <p>
-                                                    <a href="https://massive-wealthfinance.com/transactions" class="f-fallback button button--yellow" target="_blank">View Transaction</a>
+                                                    <a href="https://trust-platformfinance.com/transactions" class="f-fallback button button--yellow" target="_blank">View Transaction</a>
                                                 </p>
                                             @elseif ($type == 'unconfirmed_withdraw')
                                                 <p>
@@ -533,7 +533,7 @@
                                                     You can view your balance by clicking the button below.
                                                 </p>
                                                 <p>
-                                                    <a href="https://massive-wealthfinance.com/dashboard" class="f-fallback button button--yellow" target="_blank">View Transaction</a>
+                                                    <a href="https://trust-platformfinance.com/dashboard" class="f-fallback button button--yellow" target="_blank">View Transaction</a>
                                                 </p>
                                             @elseif ($type == 'commission')
                                                 <p>
@@ -543,7 +543,7 @@
                                                     You can view your balance by clicking the button below.
                                                 </p>
                                                 <p>
-                                                    <a href="https://massive-wealthfinance.com/dashboard" class="f-fallback button button--yellow" target="_blank">View Balance</a>
+                                                    <a href="https://trust-platformfinance.com/dashboard" class="f-fallback button button--yellow" target="_blank">View Balance</a>
                                                 </p>
                                             @else
 
@@ -551,7 +551,7 @@
 
                                             <p>
                                                 Best Regards, <br />
-                                                <strong>Massive Wealth Support Team!</strong>
+                                                <strong>Trust Platform Finance Support Team!</strong>
                                             </p>
 
                                             <p>
@@ -571,7 +571,7 @@
                                 <tr>
                                     <td class="content-cell" align="center">
                                         <p class="f-fallback sub align-center">&copy; {{ date('Y') }} 
-                                            Massive Wealth Finance App. All rights reserved.
+                                            Trust Platform Finance App. All rights reserved.
                                         </p>
                                     </td>
                                 </tr>
