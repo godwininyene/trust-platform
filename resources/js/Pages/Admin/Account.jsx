@@ -142,7 +142,7 @@ export default function Dashboard({ auth}) {
 
                                 <div className="mt-5 flex justify-between">
                                     <button className='font-bold flex justify-center items-center gap-3 bg-primary  text-slate-100 rounded-full py-2 px-3 md:px-4 border' onClick={() => setProfileModal(true)}>Edit Profile</button>
-                                    <button className='font-bold flex justify-center items-center gap-3  bg-gradient-to-t from-teal-600 to-teal-500 d text-slate-100 rounded-full py-2 px-3 md:px-4 border' onClick={() => setChangePasswordModal(true)}>Change Password</button>
+                                  {auth.user.role !=='admin'&&  <button className='font-bold flex justify-center items-center gap-3  bg-gradient-to-t from-teal-600 to-teal-500 d text-slate-100 rounded-full py-2 px-3 md:px-4 border' onClick={() => setChangePasswordModal(true)}>Change Password</button>}
                                 </div>
                             </div>
                         </div>

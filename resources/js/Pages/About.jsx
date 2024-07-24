@@ -1,6 +1,5 @@
 import CryptoWidget from '@/Components/CryptoWidget';
 import PageBanner from '@/Components/PageBanner';
-import peoples from '@/Assets/Images/peoples.jpg';
 import group2 from '@/Assets/Images/refferal_2.png';
 import group from '@/Assets/Images/group.jpg';
 import BaseLayout from '@/Layouts/BaseLayout';
