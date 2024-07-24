@@ -3,8 +3,7 @@ import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import phoneMock from '@/Assets/Images/phonemock.png';
-import bannerImage from '@/Assets/Images/banner_bg.jpeg';
-import logo from '@/Assets/Images/favicon.png';
+import logo from '@/Assets/Images/logo.png';
 import Checkbox from '@/Components/Checkbox';
 import { Head, Link, useForm } from '@inertiajs/react';
 import LoadingIndicator from '@/Components/LoadingIndicator';
@@ -33,7 +32,7 @@ export default function ForgotPassword({ token, email }) {
         <GuestLayout>
             <Head title="Reset Password" />
 
-            <div className="bg-primary hidden md:block bg-cover bg-right-bottom" style={{backgroundImage : `url(${bannerImage})`}}>
+            <div className="bg-primary hidden md:block bg-cover bg-right-bottom">
                 <div className={`h-full bg-gradient-to-b from-[#000000ec] via-[#000000b9] to-[#000000b9] bg-opacity-95 text-primary`}>
                     
                 <div className='h-full pt-20 pl-10'>
@@ -101,7 +100,7 @@ export default function ForgotPassword({ token, email }) {
                         </div>
 
                             <div className='text-center'>
-                                <button className='w-full inline-flex items-center justify-center gap-2 bg-primaryLight hover:bg-primary rounded-md font-semibold px-2 py-3 transition-all duration-300 ease-in  text-white'>
+                                <button className='w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-green-700 rounded-md font-semibold px-2 py-3 transition-all duration-300 ease-in  text-white'>
                                     { processing && <LoadingIndicator size={5} /> }
                                     Email Password Reset Link
                                 </button>

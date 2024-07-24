@@ -10,11 +10,7 @@ import { SiCoinmarketcap } from "react-icons/si";
 import { CiViewTimeline } from "react-icons/ci";
 import {GiTrade} from 'react-icons/gi'
 import peoples3 from '@/Assets/Images/referral_bg.jpg';
-import featureIcon1 from '@/Assets/Images/feature-icon-1.png'
-import featureIcon3 from '@/Assets/Images/feature-icon-3.png';
-import featureIcon4 from '@/Assets/Images/feature-icon-4.png';
-import featureIcon5 from '@/Assets/Images/feature-icon-5.png';
-import featureIcon6 from '@/Assets/Images/feature-icon-6.png';
+
 import ctabg from '@/Assets/Images/bg2.png';
 import feature0 from '@/Assets/Images/features01.png';
 import group2 from '@/Assets/Images/refferal_2.png';

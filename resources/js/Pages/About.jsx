@@ -1,7 +1,6 @@
 import CryptoWidget from '@/Components/CryptoWidget';
 import PageBanner from '@/Components/PageBanner';
 import group2 from '@/Assets/Images/refferal_2.png';
-import group from '@/Assets/Images/group.jpg';
 import BaseLayout from '@/Layouts/BaseLayout';
 import { Link, Head } from '@inertiajs/react';
 import {LuMenu} from 'react-icons/lu';

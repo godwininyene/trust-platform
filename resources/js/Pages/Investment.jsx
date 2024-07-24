@@ -6,7 +6,6 @@ import acctType from '@/Assets/Images/acct_type.png';
 import payment from '@/Assets/Images/payment.png';
 import promo from '@/Assets/Images/promo.png';
 import trading from '@/Assets/Images/trading.png';
-import bannerBg from '@/Assets/Images/banner_bg.webp';
 import { MdManageAccounts } from 'react-icons/md';
 import { BsFillAwardFill, BsShieldCheck } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
