@@ -41,7 +41,7 @@ const SideBar = ({user}) => {
     }
     return (
         <div className={`md:py-2 md:px-4 flex flex-col h-full`}>
-            {/* Brand Name */}
+            {/* Brand Name goes here*/}
             <section className={`bg-slate-700 dark:bg-slate-900 p-3 mt-1 rounded-md shadow-md hidden md:block`}>
                 <img src={logo} alt=""className='' />
             </section>
