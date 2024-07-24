@@ -17,7 +17,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(PlanSeeder::class);
         $this->call([
             UserSeed::class,
-            PlanSeed::class
+            PlanSeed::class,
+            FaqSeed::class
         ]);
         $sql = storage_path('sql/countries.sql');
         DB::unprepared(file_get_contents($sql));

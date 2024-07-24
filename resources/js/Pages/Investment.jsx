@@ -289,9 +289,9 @@ export default function Welcome({ auth }) {
 
         {/*Security Content Start */}
           <section className='py-12 lg:py-24 bg-dark-light  px-4 lg:px-0' >
-                <div className='max-w-6xl mx-auto dark:text-white'  data-aos="fade-up" data-aos-delay="150">
+                <div className='max-w-6xl mx-auto text-white'  data-aos="fade-up" data-aos-delay="150">
                     <h2 className='text-center uppercase text-3xl md:text-3xl font-black max-w-[600px] mx-auto'>maintaining the security of our <span className='text-primary'>clients' funds.</span></h2>
-                    <p className='text-center text-xl mt-3 mb-10 md:mb-20 w-[70%] ml-[15%] '>
+                    <p className='text-center text-xl text-text-dark mt-3 mb-10 md:mb-20 w-[70%] ml-[15%] '>
                         We deposit clients' fund into segregated accounts with leading global Tier 1 banks. 
                         With our risk management program in place,
                         we will always keep our clients’ funds safe.

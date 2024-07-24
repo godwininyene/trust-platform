@@ -459,7 +459,7 @@
                     <tr>
                         <td class="email-masthead">
                             <a href="{{ route('dashboard') }}" class="f-fallback email-masthead_name">
-                                <img src="{{ asset('favicon.png') }}" alt="logo"
+                                <img src="{{ asset('logo.png') }}" alt="logo"
                                     style="width:100px">
                             </a>
                         </td>

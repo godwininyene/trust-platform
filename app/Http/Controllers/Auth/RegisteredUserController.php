@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
             'lastname' => (isset($lastname) && $lastname != $request->fullname) ? $lastname : null,
             'email' => $request->email,
             'referral_id' => (isset($request->referral_id) && $request->referral_id != 'null') ? $request->referral_id : null,
-            'account_id' => 'msw-' . time(),
+            'account_id' => 'tpf-' . time(),
             'password' => Hash::make($request->password),
             'timezone' => isset($request->time_zone) ? $request->time_zone : null,
         ]);
