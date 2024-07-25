@@ -27,7 +27,6 @@ export default function Welcome({ auth }) {
        try {
             const res = await axios.get(route(`api.fetch_plans`));
             const plans = res.data.body.plans;
-            console.log(plans);
             setPlans(plans)
 
         } catch (error) {
@@ -122,7 +121,7 @@ export default function Welcome({ auth }) {
 
                        {
                         plans && plans.map((plan, i)=>(
-                            <div className='mt-2'>
+                            <div key={plan.id} className='mt-2'>
                             <div className='h-full bg-dark rrelative border-[3px] border-primary rounded-xl px-5 pb-3' data-aos="flip-left" data-aos-easing="ease-out-cubic">
                                 <div className='h-16 w-16 rounded-full border-[3px] border-primary mx-auto flex items-center justify-center text-4xl font-black bg-white relative -top-10'>{i + 1}</div>
                                 <div className="w-12 h-12 rounded-full border-[3px] border-primary  bg-white text-black   mx-auto flex items-center justify-center text-2xl p-7 font-black relative -top-14 left-5">{plan.percentage}%</div>

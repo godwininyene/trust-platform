@@ -45,12 +45,12 @@
 
         
         @inertia        
-        {{-- <script type="text/javascript">
+        <!-- {{-- <script type="text/javascript">
             function googleTranslateElementInit() {
                 new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
             }
         </script>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> --}}
-        <script src="//code.tidio.co/58zlv3ulnedky23zoukzs9xl3pb0rwem.js" async></script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> --}} -->
+        <!-- <script src="//code.tidio.co/58zlv3ulnedky23zoukzs9xl3pb0rwem.js" async></script> -->
     </body>
 </html>

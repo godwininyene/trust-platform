@@ -10,10 +10,10 @@ import 'aos/dist/aos.css';
 export default function BaseLayout({ banner, children }) {
   useEffect(()=>{
     AOS.init();
-    const tidioChatBox = document.getElementById('tidio-chat-iframe');
-    if(tidioChatBox){
-      tidioChatBox.style.display = 'block';
-    }
+    // const tidioChatBox = document.getElementById('tidio-chat-iframe');
+    // if(tidioChatBox){
+    //   tidioChatBox.style.display = 'block';
+    // }
   })
   return (
     <div>

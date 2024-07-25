@@ -2,7 +2,7 @@ import GuestLayout from '@/Layouts/GuestLayout';
 import InputError from '@/Components/InputError';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import phoneMock from '@/Assets/Images/phonemock.png';
+import phoneMock from '@/Assets/Images/about_dark.png';
 import logo from '@/Assets/Images/logo.png';
 import Checkbox from '@/Components/Checkbox';
 import { Head, Link, useForm } from '@inertiajs/react';
@@ -26,8 +26,8 @@ export default function ForgotPassword({ status }) {
             <div className="bg-primary hidden md:block bg-cover bg-right-bottom">
                 <div className={`h-full bg-gradient-to-b from-[#000000ec] via-[#000000b9] to-[#000000b9] bg-opacity-95 text-primary`}>
                     
-                <div className='h-full pt-20 pl-10'>
-                    <img src={phoneMock} alt="mock" className={`w-[70%]`} />
+                <div className='h-full'>
+                    <img src={phoneMock} alt="mock" className={`w-[100%] -ml-14 -mt-14`} />
                 </div>
             </div>
             </div>
