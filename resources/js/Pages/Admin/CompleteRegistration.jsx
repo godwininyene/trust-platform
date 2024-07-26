@@ -105,7 +105,7 @@ const CompleteRegistration = () => {
                                 </div>
 
                                 <div className='text-center'>
-                                    <button disabled={processing} className='w-full inline-flex gap-2 justify-center items-center bg-primaryLight hover:bg-primary rounded-md font-semibold px-2 py-3 transition-all duration-300 ease-in  text-white'>
+                                    <button disabled={processing} className='w-full inline-flex gap-2 justify-center items-center bg-primary hover:bg-green-700 rounded-md font-semibold px-2 py-3 transition-all duration-300 ease-in  text-white'>
                                         {processing ? <LoadingIndicator size={5} />  : <FaUserPlus className="w-6 h-6"  /> }
                                         Save My Details
                                     </button>

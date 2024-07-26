@@ -163,7 +163,7 @@ const Invest = ({onBack, wallet, onInvestComplete }) => {
                                     {message}
                                 </p>}
                                 <div className='text-left'>
-                                    <button disabled={processing} className='inline-flex gap-2 justify-center items-center bg-primaryLight hover:bg-primary rounded-md font-semibold px-4 py-3 transition-all duration-300 ease-in  text-white'>
+                                    <button disabled={processing} className='inline-flex gap-2 justify-center items-center bg-primary hover:bg-green-700 rounded-md font-semibold px-4 py-3 transition-all duration-300 ease-in  text-white'>
                                         {processing ? <>
                                                 <LoadingIndicator className="w-6 h-6"  /> Investing...
                                             </>

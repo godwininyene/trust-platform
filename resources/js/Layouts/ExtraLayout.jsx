@@ -1,4 +1,4 @@
-import logo from '@/Assets/Images/favicon.png';
+import logo from '@/Assets/Images/logo.png';
 import { Link } from '@inertiajs/react';
 
 export default function Extra({ children }) {

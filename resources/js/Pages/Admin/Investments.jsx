@@ -103,7 +103,7 @@ export default function Dashboard({ auth }) {
                     </h2>
                     <div className="overflow-x-auto">
                         <table className="w-full table border-collapse bg-white dark:bg-slate-800 rounded-md overflow-hidden shadow-md">
-                            <thead className="bg-primary dark:bg-primaryLight text-white text-left">
+                            <thead className="bg-primary  text-white text-left">
                                 <tr>
                                     <th className="py-1 px-3 whitespace-nowrap">Plan</th>
                                     <th className="py-1 px-3 whitespace-nowrap">Amount Invested</th>

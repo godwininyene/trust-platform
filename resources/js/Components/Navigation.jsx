@@ -37,8 +37,8 @@ const Navigation = () => {
     <header className={`sticky top-0 bg-black bg-opacity-20 md:bg-opacity-30 z-50 py-4 px-4`}>
       <div className="flex justify-between max-w-6xl mx-auto">
         <aside className={`flex items-center justify-between w-full md:w-auto`}>
-          <div className={`flex-grow bg-red-500`}>
-            <img src={logo} alt="" className={`w-20`} />
+          <div className={`flex-grow`}>
+            <img src={logo} alt="" className={`w-40`} />
           </div>
           <button className={`bg-white text-slate-950 px-1 py-1 rounded-md md:hidden relative z-50`} onClick={() => setToggle((state) => !state)}>
             <HiMenuAlt1 className={`h-7 w-7`} />

@@ -486,7 +486,7 @@
 
                                             <p>
                                                 Best Regards, <br />
-                                                <strong>Massive Wealth Support Team!</strong>
+                                                <strong>Trust Platform Support Team!</strong>
                                             </p>
 
                                             <p>
