@@ -9,13 +9,13 @@
     <title inertia>Trust Platform</title>
     <meta name="description" content="Trust Platform Trading is an international online forex and commodities broker." />
     <meta property="og:title"              content="Trust Platform Trading; An Online Forex & Investment Broker" />
-    <meta property="og:description"        content="Invst with Trust Platform Trading; An international online forex and commodities broker." />
+    <meta property="og:description"        content="Invst with Trust Platform finance Trading; An international online forex and commodities broker." />
     <meta property="og:url"                content="https://trust-platformfinance.com/FAQs" />
 @elseif ($currentPage == 'about-our-company')
     <title inertia>About Us - Trust Platform</title>
     <meta name="description" content="Learn more about Trust Platform Investment and Trading platform. An international online forex and commodities broker." />
     <meta property="og:title"              content="About Us - Trust Platform" />
-    <meta property="og:description"        content="Learn more about Massive Wealth Investment and Trading platform. An international online forex and commodities broker." />
+    <meta property="og:description"        content="Learn more about  Trust Platform Investment and Trading platform. An international online forex and commodities broker." />
     <meta property="og:url"                content="https://trust-platformfinance.com/about-our-company" />
 @elseif ($currentPage == 'contact-support')
     <title inertia>Contact Us - Trust Platform</title>

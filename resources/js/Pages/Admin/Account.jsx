@@ -62,6 +62,7 @@ export default function Dashboard({ auth}) {
 
  
     const [deposits, setDeposits] = useState();
+    const [referrals, setReferrals] = useState();
     const [Withdrawal, setWithdraws] = useState();
     const [investment, setInvestment] = useState();
     const[wallet, setWallet] = useState();
@@ -77,6 +78,7 @@ export default function Dashboard({ auth}) {
         await axios.get(route('api.fetch_statistics'))
         .then((res) => {
             setDeposits(res.data.body.total_deposit);
+            setReferrals(res.data.body.total_referrals)
             setWithdraws(res.data.body.total_withdraw);
             setInvestment(res.data.body.investment);
             setFetched(true);
@@ -179,9 +181,9 @@ export default function Dashboard({ auth}) {
                                         {wallet && wallet.referral_balance}
                                     </h1>
                                     <div className='text-xs '>
-                                        <Link href={``}>
+                                        {/* <Link href={``}>
                                             Click to see your referrals
-                                        </Link>
+                                        </Link> */}
                                     </div>
                                 </aside>
                             </div>
@@ -195,12 +197,12 @@ export default function Dashboard({ auth}) {
                                         Total Referrals
                                     </p>
                                     <h1 className={`font-black text-2xl mb-1  dark:text-[#1bffcb]`}>
-                                        {deposits ? deposits : 0}
+                                        {referrals ? referrals : 0}
                                     </h1>
                                     <div className='text-xs '>
-                                        <Link href={``}>
+                                        {/* <Link href={``}>
                                             Click to see your referrals
-                                        </Link>
+                                        </Link> */}
                                     </div>
                                 </aside>
                             </div>

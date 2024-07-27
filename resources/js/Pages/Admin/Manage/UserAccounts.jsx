@@ -12,6 +12,7 @@ import { IoEye } from 'react-icons/io5';
 import { FaUserTimes } from 'react-icons/fa';
 import Modal from '@/Components/CustomModal';
 import FundAccount from './FundAccount';
+import Pagination from '@/Components/Pagination';
 
 export default function Dashboard({ auth, stats }) {
     const [displayStyle, setDisplayStyle] = useState('list');
@@ -23,6 +24,7 @@ export default function Dashboard({ auth, stats }) {
     const [userModal, setUserModal] = useState(false);
     const [users, loadUsers] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [pagination, setPagination] = useState();
     useEffect(() => {
         fetchUsers();
     }, [])
@@ -33,6 +35,7 @@ export default function Dashboard({ auth, stats }) {
         .then((res) => {
             if(res.data.success){
                 loadUsers(res.data.body.users.data);
+                setPagination(res.data.body.users)
                 setFetched(true);
                 setProcessing(false);
             }
@@ -84,9 +87,11 @@ export default function Dashboard({ auth, stats }) {
 
     const deleteUsers = async (user) => {
         setDeleting(true);
-        await axios.post(route('api.update_user'), {user_id: user.id})
+        await axios.post(route('api.delete_user'), {user_id: user.id})
         .then((res) => {
+            console.log(res.data)
             if(res.data.success){
+                alert(res.data.message)
                 setUserModal(false)
                 updateUserInList(res.data.body.user, 'delete');
                 setDeleting(false);
@@ -97,6 +102,11 @@ export default function Dashboard({ auth, stats }) {
             console.log(error.response.data.message);
         })
     };
+
+    const paginateResult = (data)=>{
+        setPagination(data.body.users)
+        loadUsers(data.body.users.data);
+    }
     
     return (
         <AuthenticatedLayout
@@ -300,6 +310,10 @@ export default function Dashboard({ auth, stats }) {
                         </aside>
                     </>}
                 </section>
+
+                {pagination && <div className="mt-3 flex justify-end">
+                    <Pagination pageLimit={pagination.per_page} totalRecords={pagination.total} links={pagination.links} onPageResponse={(data) => paginateResult(data)} />
+                </div>}
 
 
                 <Modal show={userModal} maxWidth="sm" onClose={() => setUserModal(false)} backDrop={false}>

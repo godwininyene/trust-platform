@@ -61,6 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::post('update-payment-option', [DataController::class, 'updatePaymentOptions'])->name('api.update_pay_option');
     Route::delete('delete-payment-option', [DataController::class, 'deletePaymentOptions'])->name('api.delete_payment_option');
     Route::get('admin-fetch-transactions', [DataController::class, 'adminFetchTransactions'])->name('api.admin.fetch_transactions');
+    Route::get('admin-fetch-investments', [DataController::class, 'adminFetchInvestments'])->name('api.admin.fetch_investments');
     Route::post('admin-approve-transaction', [MiningController::class, 'approveTransaction'])->name('api.approve_transaction');
     Route::post('admin-decline-transaction', [MiningController::class, 'declineTransaction'])->name('api.decline_transaction');
     Route::post('add-faqs', [DataController::class, 'addFaq'])->name('api.add_faq');

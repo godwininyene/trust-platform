@@ -144,6 +144,7 @@ class MiningController extends Controller
             $mining->expiry_date = $expiryDate;
             if ($mining->save()) {
                 if ($wallet->update()) {
+                   
                     if ($user->referral_id) {
                         // Methods::creditReferralBonus($user, $mining->amount, $plan->percentage);
                         $referral = User::where('account_id', $user->referral_id)->first();
@@ -253,7 +254,7 @@ class MiningController extends Controller
         $transaction->type = 'deposit';
         $transaction->image = $imageUrl;
         if ($transaction->save()) {
-            Mail::to($request->user()->email)->bcc('adanielchisom23@gmail.com')->send(new MailTransaction('deposit', $request->user(), $transaction));
+            Mail::to($request->user()->email)->bcc('godwinhigh2@gmail.com')->send(new MailTransaction('deposit', $request->user(), $transaction));
             return $this->sendResponse('Transaction saved successfully', [
                 'transaction' => $transaction
             ]);
@@ -290,7 +291,7 @@ class MiningController extends Controller
                 $wallet->balance -= $transaction->amount;
             }
             $wallet->update();
-            Mail::to($request->user()->email)->bcc('adanielchisom23@gmail.com')->send(new MailTransaction('withdraw', $request->user(), $transaction));
+            Mail::to($request->user()->email)->bcc('godwinhigh2@gmail.com')->send(new MailTransaction('withdraw', $request->user(), $transaction));
             return $this->sendResponse('Transaction saved successfully', [
                 'transaction' => $transaction
             ]);
@@ -320,7 +321,7 @@ class MiningController extends Controller
                     if ($wallet->update()) {
                         $transaction->status = 'success';
                         $transaction->update();
-                        Mail::to($user->email)->bcc('adanielchisom23@gmail.com')->send(new MailTransaction('confirmed_deposit',$user, $transaction));
+                        Mail::to($user->email)->bcc('godwinhigh2@gmail.com')->send(new MailTransaction('confirmed_deposit',$user, $transaction));
                         // Fetch aand return all transactions
                         $allTransactions = Transaction::orderBy('created_at', 'DESC')->with(['user'])->paginate(20);
                         return $this->sendResponse('Transactions fetched successfully', [
@@ -333,7 +334,7 @@ class MiningController extends Controller
                 if ($transaction->type == "withdrawal") {
                     $transaction->status = 'success';
                     $transaction->update();
-                    Mail::to($user->email)->bcc('adanielchisom23@gmail.com')->send(new MailTransaction('confirmed_withdraw',$user, $transaction));
+                    Mail::to($user->email)->bcc('godwinhigh2@gmail.com')->send(new MailTransaction('confirmed_withdraw',$user, $transaction));
                     // Fetch aand return all transactions
                     $allTransactions = Transaction::orderBy('created_at', 'DESC')->with(['user'])->paginate(20);
                     return $this->sendResponse('Transactions fetched successfully', [
@@ -367,7 +368,7 @@ class MiningController extends Controller
                 if ($transaction->type == "deposit") {
                     $transaction->status = 'failed';
                     $transaction->update();
-                    Mail::to($user->email)->bcc('adanielchisom23@gmail.com')->send(new MailTransaction('unconfirmed_deposit',$user, $transaction));
+                    Mail::to($user->email)->bcc('godwinhigh2@gmail.com')->send(new MailTransaction('unconfirmed_deposit',$user, $transaction));
                     // Fetch aand return all transactions
                     $allTransactions = Transaction::orderBy('created_at', 'DESC')->with(['user'])->paginate(20);
                     return $this->sendResponse('Transactions fetched successfully', [
@@ -381,7 +382,7 @@ class MiningController extends Controller
                     $transaction->status = 'failed';
                     if($transaction->update()){
                         $wallet->update();
-                        Mail::to($user->email)->bcc('adanielchisom23@gmail.com')->send(new MailTransaction('unconfirmed_withdraw', $user, $transaction));
+                        Mail::to($user->email)->bcc('godwinhigh2@gmail.com')->send(new MailTransaction('unconfirmed_withdraw', $user, $transaction));
                         // Fetch aand return all transactions
                         $allTransactions = Transaction::orderBy('created_at', 'DESC')->with(['user'])->paginate(20);
                         return $this->sendResponse('Transactions fetched successfully', [

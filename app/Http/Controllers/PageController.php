@@ -130,6 +130,11 @@ class PageController extends Controller
         return Inertia::render('Admin/Manage/Transactions');
     }
 
+    public function manage_investments(Request $request)
+    {
+        return Inertia::render('Admin/Manage/Investments');
+    }
+
     public function manage_faqs(Request $request)
     {
         return Inertia::render('Admin/Manage/FaqManager');

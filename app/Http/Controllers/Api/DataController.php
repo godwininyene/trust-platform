@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use Carbon\Carbon;
+use App\Models\Faq;
 use App\Models\Otp;
 use App\Models\Plan;
 use App\Models\User;
@@ -14,10 +15,10 @@ use App\Utils\ImageUploader;
 use Illuminate\Http\Request;
 use App\Models\PaymentOption;
 use Illuminate\Http\Response;
+use App\Models\UserBankAccount;
 use App\Http\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use App\Models\Faq;
 use App\Notifications\OnboardNotify;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -61,7 +62,7 @@ class DataController extends Controller
 
     public function fetchUsers() : Response | JsonResponse 
     {
-        $users = User::with('wallet','transactions','mining')->latest()->paginate(20);
+        $users = User::with('wallet','transactions','mining', 'bankAccounts')->latest()->paginate(20);
         return $this->sendResponse('Users fetched successfully', [
             'users' => $users
         ]);
@@ -157,8 +158,9 @@ class DataController extends Controller
         Transaction::where('user_id', $user->id)->delete();
         Mining::where('user_id', $user->id)->delete();
         Wallet::where('user_id', $user->id)->delete();
+        UserBankAccount::where('user_id', $user->id)->delete();
         $user->delete();
-        return $this->sendResponse('Users delete successfully', [
+        return $this->sendResponse('User delete successfully', [
             'user' => $user
         ]);
     }
@@ -176,16 +178,18 @@ class DataController extends Controller
         if ($request->wallet_type == 'referral_balance') {
             $user->wallet->referral_balance += $request->amount;
         }
-        $deposit = new Transaction;
-        $deposit->user_id = $user->id;
-        $deposit->amount = $request->amount;
-        $deposit->currency = strtolower("USD");
-        $deposit->payment_channel = 'bank_payment';
-        $deposit->type =  $request->wallet_type == 'profit' ? 'mining' : 'deposit';
-        $deposit->status = 'success';
+        // $deposit = new Transaction;
+        // $deposit->user_id = $user->id;
+        // $deposit->amount = $request->amount;
+        // $deposit->currency = strtolower("USD");
+        // $deposit->payment_channel = 'bank_payment';
+        // $deposit->type =  $request->wallet_type == 'profit' ? 'mining' : 'deposit';
+        // $deposit->status = 'success';
+
+
         
-        if ($deposit->save()) {
-            $user->wallet->update();
+        if ($user->wallet->update()) {
+            // $user->wallet->update();
             return $this->sendResponse('User account funded successfully', [
                 'user' => $user
             ]);
@@ -197,8 +201,10 @@ class DataController extends Controller
     function allStatistics(Request $request) : Response | JsonResponse  
     {
         $transactions = Transaction::orderBy('created_at', 'DESC')->with(['user'])->take(5)->get();
+        $investments = Mining::orderBy('created_at', 'DESC')->with(['user', 'plan'])->take(5)->get();
         return $this->sendResponse('User account funded successfully', [
-            'transactions' => $transactions
+            'transactions' => $transactions,
+            'investments' =>$investments
         ]);
     }
 
@@ -207,6 +213,7 @@ class DataController extends Controller
         $wallet = Wallet::where('user_id', $request->user()->id)->first();
         $transactions = Transaction::where('user_id', $request->user()->id)->orderBy('created_at', 'DESC')->with(['user'])->take(5)->get();
         $trans = Transaction::where('user_id', $request->user()->id)->get();
+        $referrals = User::where('referral_id', $request->user()->account_id)->count();
         $investments = $this->getAllInvestStats($request->user());
         $totalDeposit = 0;
         $totalWithdraw = 0;
@@ -224,6 +231,7 @@ class DataController extends Controller
             'total_deposit' => $totalDeposit,
             'wallet' => $wallet,
             'investments' => $investments,
+            'total_referrals' =>  $referrals
         ]);
     }
 
@@ -502,6 +510,13 @@ class DataController extends Controller
         $transactions = Transaction::orderBy('created_at', 'DESC')->with(['user'])->paginate(20);
         return $this->sendResponse('Transactions fetched successfully', [
             'transactions' => $transactions,
+        ]);
+    }
+
+    public function adminFetchInvestments(Request $request):Response | JsonResponse{
+        $investments = Mining::orderBy('created_at', 'DESC')->with(['user', 'plan'])->paginate(20);
+        return $this->sendResponse('Investments fetched successfully', [
+            'investments' => $investments,
         ]);
     }
 

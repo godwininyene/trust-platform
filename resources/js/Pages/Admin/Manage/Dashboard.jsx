@@ -15,6 +15,7 @@ import { HiPresentationChartBar } from 'react-icons/hi';
 export default function Dashboard({ auth, stats }) {
     const [showTip, setShowTip] = useState(false);
     const [transactions, setTransactions] = useState([]);
+    const [investments, setInvestments] = useState([]);
     const [fetched, setFetched] = useState(false);
     const [processing, setProcessing] = useState(false);
     // const reffVid = useRef();
@@ -35,9 +36,11 @@ export default function Dashboard({ auth, stats }) {
         setProcessing(true)
         await axios.get(route('api.all_statistics'))
         .then((res) => {
+           
             setTransactions(res.data.body.transactions);
             setFetched(true);
             setProcessing(false)
+            setInvestments(res.data.body.investments)
         })
     }
 
@@ -45,6 +48,7 @@ export default function Dashboard({ auth, stats }) {
       fetchStats();
     }, [])
     
+  
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -82,7 +86,7 @@ export default function Dashboard({ auth, stats }) {
                                 ${stats.total_balance}
                             </h1>
                             <div className='text-xs'>
-                                <Link href={``}>
+                                <Link href={`/manage-transactions`}>
                                     Click to see transactions
                                 </Link>
                             </div>
@@ -98,7 +102,7 @@ export default function Dashboard({ auth, stats }) {
                                 ${stats.total_profit}
                             </h1>
                             <div className='text-xs'>
-                                <Link href={``}>
+                                <Link href={`/manage-transactions`}>
                                     See All Ttransactions
                                 </Link>
                             </div>
@@ -114,9 +118,9 @@ export default function Dashboard({ auth, stats }) {
                                 ${stats.total_referral_balance}
                             </h1>
                             <div className='text-xs'>
-                                <Link href={``}>
+                                {/* <Link href={``}>
                                     Check Referrals
-                                </Link>
+                                </Link> */}
                             </div>
                         </aside>
                     </div>
@@ -128,7 +132,7 @@ export default function Dashboard({ auth, stats }) {
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-3">
                     {/* Transaction History */}
                     <aside className="md:col-span-3">
-                        {/* Card */}
+                        {/* Transaction Table */}
                         <div className="bg-white dark:bg-slate-800 space-y-1 rounded-lg py-2 px-3 shadow md:px-4 min-h-[200px]">
                             <h2 className="py-2 border-b font-semibold flex justify-between items-center">
                                 <span> <BiTransferAlt className="w-6 h-6 inline-block" /> Transaction History  </span>
@@ -170,10 +174,55 @@ export default function Dashboard({ auth, stats }) {
                                     </table>
                             </div>
                         </div>
+                        {/* Investment Table */}
+                        <div className="bg-white mt-7 dark:bg-slate-800 space-y-1 rounded-lg py-2 px-3 shadow md:px-4 min-h-[200px]">
+                            <h2 className="py-2 border-b font-semibold flex justify-between items-center">
+                                <span> <BiTransferAlt className="w-6 h-6 inline-block" /> Investment History  </span>
+                                <Link href={route('manage_investments')} className="text-blue-500 underline text-sm py-2 px-3 inline-block">View All</Link>
+                            </h2>
+                            <div className="overflow-x-auto">
+                                <table className="w-full table border-collapse bg-white dark:bg-slate-700 rounded-md overflow-hidden shadow-md">
+                                    <thead className="bg-primary dark:bg-primaryLight text-white text-left">
+                                        <tr>
+                                            <th className="py-1 px-3 whitespace-nowrap">User</th>
+                                            <th className="py-1 px-3 whitespace-nowrap">Plan</th>
+                                            <th className="py-1 px-3 whitespace-nowrap">Amount Invested</th>
+                                            <th className="py-1 px-3 whitespace-nowrap">Profit</th>
+                                            <th className="py-1 px-3 whitespace-nowrap">Status</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody className="max-h-[100px] md:max-h-[100px] overflow-y-auto text-sm">
+                                        { (processing || !fetched) && (<tr>
+                                                <td colSpan={5} className="shadow-md py-6 h-32 animate-pulse text-center">
+                                                    <LoadingIndicator type='dots' size={10} />
+                                                </td>
+                                            </tr>)}
+                                        
+                                        { (investments.length > 0 && !processing) && investments.map((investment) => (
+                                            <tr key={investment.id} className="odd:bg-red-50 dark:odd:bg-slate-800">
+                                                <td className="px-2 py-2">{investment.user.firstname} {investment.user.lastname}</td>
+                                                <td className="px-2 py-2">{investment?.plan?.name}</td>
+                                                <td className="px-2 py-2">${investment.amount}</td>
+                                                <td className="px-2 py-2">${parseFloat(investment?.profit).toFixed(2)}</td>
+                                                <td className="px-2 py-2">
+                                                    {(investment.status == 'active' || investment.status == 'completed') && (<span className="text-xs flex items-center gap-1">
+                                                        <div className="h-3 w-3 rounded-full bg-green-400 inline-block"></div> {investment.status}
+                                                    </span>)}
+                                                    {(investment.status == 'denied') && (<span className="text-xs flex items-center gap-1">
+                                                        <div className="h-3 w-3 rounded-full bg-red-400 inline-block"></div> {investment.status}
+                                                    </span>)}
+                                                </td>
+                                            </tr>
+                                        )) }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </aside>
 
                     {/* Action Cards */}
-                    <aside className="grid grid-cols-2 gap-3 md:col-span-2">
+                    <aside className="grid grid-cols-2 gap-3 md:col-span-2 h-[280px]">
                         {/* Card */}
                         <Link href={route('admin.investment_plans')} className="flex flex-col sm:items-center gap-2 justify-center bg-white dark:bg-slate-800 space-y-1 rounded-lg py-4 px-3 shadow md:px-4 h-full lg:col-span-1">
                             <ImPieChart className={`md:h-10 md:w-10 h-6 w-6`} />
@@ -199,7 +248,7 @@ export default function Dashboard({ auth, stats }) {
                             </aside>
                         </Link>
                         {/* Card */}
-                        <Link href={route('admin.payment_options')} className="flex flex-col sm:items-center gap-2 justify-center bg-white dark:bg-slate-800 space-y-1 rounded-lg py-4 px-3 shadow md:px-4 h-full lg:col-span-1">
+                        <Link href={route('manage_investments')} className="flex flex-col sm:items-center gap-2 justify-center bg-white dark:bg-slate-800 space-y-1 rounded-lg py-4 px-3 shadow md:px-4 h-full lg:col-span-1">
                             <HiPresentationChartBar className={`md:h-10 md:w-10 h-6 w-6`} />
                             <aside>
                                 <p className={`text-lg font-semibold`}>

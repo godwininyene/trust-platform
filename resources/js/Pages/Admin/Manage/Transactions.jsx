@@ -10,6 +10,7 @@ import {FaMoneyBillTransfer} from 'react-icons/fa6';
 import defaulAvatar from '@/Assets/Images/default.png';
 import coverImage from '@/Assets/Images/forex.jpeg';
 import { FaTimesCircle } from 'react-icons/fa';
+import Pagination from '@/Components/Pagination';
 
 export default function Dashboard({ auth }) {
     const [transactions, setTransactions] = useState([]);
@@ -19,15 +20,16 @@ export default function Dashboard({ auth }) {
     const [declining, setDeclining] = useState(false);
     const [detailModal, setDetailModal] = useState(false);
     const [selectedTransaction, setSelectedTransaction] = useState(false);
+    const [pagination, setPagination] = useState([]);
 
-    console.log(transactions);
-    
+   
     // Fetch Dashboard Statistics
     let fetchStats = async () => {
         setProcessing(true)
         await axios.get(route('api.admin.fetch_transactions'))
         .then((res) => {
             setTransactions(res.data.body.transactions.data);
+            setPagination(res.data.body.transactions)
             setFetched(true);
             setProcessing(false)
         })
@@ -61,6 +63,11 @@ export default function Dashboard({ auth }) {
             alert(err.response.data.message);
             setDeclining(false);
         });
+    }
+
+    const paginateResult = (data)=>{
+        setPagination(data.body.transactions)
+        setTransactions(data.body.transactions.data);
     }
 
     return (
@@ -141,6 +148,9 @@ export default function Dashboard({ auth }) {
                         </div>
                     </div>
                 </aside>
+                {pagination && <div className="mt-3 flex justify-end">
+                    <Pagination pageLimit={pagination.per_page} totalRecords={pagination.total} links={pagination.links} onPageResponse={(data) => paginateResult(data)} />
+                </div>}
             </section>
 
             {/* Deposit Modal */}

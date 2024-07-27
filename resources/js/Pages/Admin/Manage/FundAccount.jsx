@@ -7,6 +7,7 @@ import { AiOutlineTransaction } from 'react-icons/ai';
 
 
 const FundAccount = ({user, onBack, onFunded = () => Object}) => {
+    console.log(user)
     let back = () => {
         onBack();
     }
@@ -20,6 +21,7 @@ const FundAccount = ({user, onBack, onFunded = () => Object}) => {
         await axios.post(route('api.fund_user'), form)
         .then((res) => {
             if(res.data.success){
+                alert(res.data.message)
                 e.target.reset();
                 setProcessing(false);              
                 onFunded(res.data.body.user)
@@ -65,6 +67,43 @@ const FundAccount = ({user, onBack, onFunded = () => Object}) => {
                                                 {user.approval_status}
                                             </span>
                                         </p>
+
+                                        <h2 className='mt-6'>Payment Channels/Bank Accounts</h2>
+                                       <table className='w-full'>
+                                        <thead className='bg-slate-50'>
+                                            <th  className="py-1 px-3 text-sm">Name</th>
+                                            <th  className="py-1 px-3 text-sm">Number</th>
+                                            <th  className="py-1 px-3 text-sm">Bank</th>
+                                            <th  className="py-1 px-3 text-sm">Type</th>
+
+                                        </thead>
+                                        <tbody>
+                                            {
+                                                (user.bank_accounts.length==0)&&
+                                                <tr className="even:bg-teal-50">
+                                                    <td className="whitespace-nowrap border py-1 px-4" colSpan="4">
+                                                    <div className="flex items-center justify-center gap-5 w-full">
+                                                        <span>No record available</span>
+                                                    </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            {
+                                                
+                                                user.bank_accounts.map((account)=>(
+                                                    <tr className='border-b'>
+                                                        <td className='text-sm'>{account.account_name}</td>
+                                                        <td className='text-sm'>{account.account_number}</td>
+                                                        <td className='text-sm'>{account.bank_name}</td>
+                                                        <td className='text-sm'>{account.account_type}</td>
+                                                    </tr>
+                                                ))
+                                                
+                                            }
+                                        </tbody>
+                                       </table>
+  
+
                                         <div className="grid grid-cols-3 mt-6 border-y pb-1 pt-2 divide-x">
                                             {/* Action */}
                                             <aside>

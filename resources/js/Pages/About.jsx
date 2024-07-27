@@ -135,7 +135,7 @@ export default function Welcome({ auth }) {
                             <div className=''>
                                 <div className='mb-12'>
                                     <div className='mb-5'data-aos="fade-right" data-aos-delay="300"  data-aos-duration="800" >
-                                        <h1 className='heading-primary text-[36px] leading-[40px] font-black text-white'><span className='text-primary'>Benefits</span> We Offer</h1>
+                                        <h1 className='heading-primary mt-14 md:mt-0 text-[36px] leading-[40px] font-black text-white'><span className='text-primary'>Benefits</span> We Offer</h1>
                                     </div>
                                     <div className=''>
                                         <p className='text-text-dark text-xl'>

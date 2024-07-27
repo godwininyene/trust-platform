@@ -80,6 +80,11 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
+    public function bankAccounts(): HasMany
+    {
+        return $this->hasMany(UserBankAccount::class);
+    }
+
     public function otp(): HasOne
     {
         return $this->hasOne(Otp::class);

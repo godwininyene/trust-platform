@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/manage-investment-plans', [PageController::class, 'investment_plans'])->name('admin.investment_plans');
         Route::get('/manage-payment-options', [PageController::class, 'payment_options'])->name('admin.payment_options');
         Route::get('/manage-transactions', [PageController::class, 'manage_transactions'])->name('manage_transactions');
+        Route::get('/manage-investments', [PageController::class, 'manage_investments'])->name('manage_investments');
         Route::get('/manage-faqs', [PageController::class, 'manage_faqs'])->name('admin.manage_faqs');
     });
 

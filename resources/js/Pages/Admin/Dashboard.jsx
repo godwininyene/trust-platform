@@ -19,6 +19,7 @@ import LoadingIndicator from '@/Components/LoadingIndicator';
 import moment from 'moment/moment';
 
 export default function Dashboard({ auth, wallet }) {
+    // console.log(wallet);
     const [showTip, setShowTip] = useState(false);
     const [transactions, setTransactions] = useState([]);
     const [deposits, setDeposits] = useState();
@@ -57,9 +58,11 @@ export default function Dashboard({ auth, wallet }) {
       fetchStats();
       axios.get(route('api.fetch_referrals'))
         .then((res) => {
-            console.log(res.data.body);
+            // console.log(res.data.body);
         });
     }, [])
+
+    
 
     return (
         <AuthenticatedLayout
@@ -138,9 +141,9 @@ export default function Dashboard({ auth, wallet }) {
                                 ${wallet.referral_balance}
                             </h1>
                             <div className='text-xs'>
-                                <Link href={route('manage_account')}>
+                                {/* <Link href={route('manage_account')}>
                                     Check referrals on profile
-                                </Link>
+                                </Link> */}
                             </div>
                         </aside>
                     </div>
@@ -170,7 +173,7 @@ export default function Dashboard({ auth, wallet }) {
                                 ${wallet.profit}
                             </h1>
                             <div className='text-xs'>
-                                <Link href={route('manage_account')}>
+                                <Link href={route('my_investments')}>
                                     Manage my profile
                                 </Link>
                             </div>
