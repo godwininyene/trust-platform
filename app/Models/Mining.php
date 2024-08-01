@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Mining extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['start_date'];
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');

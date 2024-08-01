@@ -49,10 +49,11 @@ export default function Dashboard({ auth, wallet }) {
             setWithdraws(res.data.body.total_withdraw);
             setInvestments(res.data.body.investments)
             setFetched(true);
-            console.log(fetched);
             setProcessing(false)
         })
     }
+
+    console.log(investments)
 
     useEffect(() => {
       fetchStats();
@@ -202,7 +203,7 @@ export default function Dashboard({ auth, wallet }) {
                                     </span>
                                     <span>
                                         <p className="flex flex-col md:flex-row gap-x-1 mb-2"><strong>Total Duration: </strong> <span className='text-primary dark:text-primaryLight font-medium'>{ investment.totalDuration } hours</span> </p>
-                                        <p className="flex flex-col md:flex-row gap-x-1"><strong>TIme Remaining: </strong> <span className='text-primary dark:text-primaryLight font-medium'>{investment.totalDuration - investment.currentLevel } hours</span> </p>
+                                        <p className="flex flex-col md:flex-row gap-x-1"><strong>Time Remaining: </strong> <span className='text-primary dark:text-primaryLight font-medium'>{investment.totalDuration - investment.currentLevel } hours</span> </p>
                                     </span>
                                 </section>
                             </div> :

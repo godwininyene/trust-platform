@@ -74,56 +74,48 @@ class MiningController extends Controller
         }
     }
 
-    public static function daily_mining()
-    {
-        
-        
+    public static function daily_mining() {
         try {
-        
-          
-            echo $today = Carbon::now();
-            
+            $today = Carbon::now();
             $mining = Mining::where('status','active')->get();
             foreach($mining as $value){
-                // $todayDate = new DateTime(Carbon::now());
                 $todayDate = Carbon::now();
-                $lastUp = $value->updated_at;
+                $lastUp = Carbon::createFromTimestamp($value->updated_at);
                 $hours = $today->diffInHours($lastUp);
-               
+                if ($hours > 0) {
                     $plan = Plan::where('id',$value->plan_id)->first();
                     $wallet = Wallet::where('user_id', $value->user_id)->first();
-                    if ($value->expiry_date <= Carbon::now()) {
-                        return "expired";
-                        $wallet->profit = $wallet->profit + (($plan->percentage  / 100) * $value->amount);
-                        $wallet->balance = $wallet->balance + $value->amount + (($plan->percentage  / 100) * $value->amount);
-                        $value->profit = (($plan->percentage  / 100) * $value->amount);
+                    if ($value->expiry_date <= $today->getTimestamp()) {
+                        $wallet->profit = $wallet->profit + (($plan->percentage / 100) * $value->amount);
+                        $wallet->balance = $wallet->balance + $value->amount + (($plan->percentage / 100) * $value->amount);
+                        $value->profit = (($plan->percentage / 100) * $value->amount);
                         $value->status = 'completed';
-                        // $value->updated_at = Carbon::now();
+                        $value->updated_at = Carbon::now()->getTimestamp();
                         $wallet->update();
                         $value->update();
                     } else {
-                        $to = Carbon::createFromFormat('Y-m-d H:s:i', $value->expiry_date);
-                        $from = Carbon::createFromFormat('Y-m-d H:s:i', $value->created_at);
+                        $to = Carbon::createFromTimestamp($value->expiry_date);
+                        $from = Carbon::createFromTimestamp($value->created_at);
                         $totalDuration = $to->diffInHours($from);
-                        $hourly_interest = ((($plan->percentage  / 100) * $value->amount) / $totalDuration) * $hours;
+                        $hourly_interest = ((($plan->percentage / 100) * $value->amount) / $totalDuration) * $hours;
                         $value->profit = $value->profit + $hourly_interest;
                         $wallet->update();
-                        // $value->updated_at = Carbon::now();
+                        $value->updated_at = Carbon::now()->getTimestamp();
                         $value->update();
-                        return "not expired";
                     }
                     Log::channel('cron_jobs')->info(Carbon::now());
                     Log::channel('cron_jobs')->info($wallet);
-                
+                }
             }
         } catch (\Throwable $th) {
             Log::channel('cron_jobs')->info($th);
         }
     }
+
+  
     
     function make_investment(Request $request) : Response | JsonResponse | string
     {
-        date_default_timezone_set('Africa/Lagos');
         $validate = Validator::make($request->all(), [
             'amount' => ['required'],
             'plan_id' => ['required'],

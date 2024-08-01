@@ -6,6 +6,8 @@ import { HiMenuAlt1 } from 'react-icons/hi';
 import { Link } from '@inertiajs/react';
 import ToggleButton from './ToggleButton';
 import { FaClipboardQuestion } from 'react-icons/fa6';
+import GoogleTranslate from './GoogleTranslate';
+
 
 const Navigation = () => {
   const [toggle, setToggle] = useState(false);
@@ -110,7 +112,15 @@ const Navigation = () => {
               
             </ul>
         </aside>
+
+       
       </div>
+
+      <div className=' absolute right-6'>
+            <GoogleTranslate />
+      </div>
+
+       
 
       {/* Mobile Overlay */}
       <div className={`${toggle ? 'md:hidden block' : 'md:hidden hidden'} fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40`}  onClick={() => setToggle(false)}></div>

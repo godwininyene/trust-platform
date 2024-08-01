@@ -45,12 +45,19 @@
 
         
         @inertia        
-        <!-- {{-- <script type="text/javascript">
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-            }
-        </script>
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script> --}} -->
-        <!-- <script src="//code.tidio.co/58zlv3ulnedky23zoukzs9xl3pb0rwem.js" async></script> -->
+       
+        <!--Start of Tawk.to Script-->
+        <!-- <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/66a9a8a01601a2195b9e82a9/1i43bld1t';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script> -->
+        <!--End of Tawk.to Script-->
     </body>
 </html>

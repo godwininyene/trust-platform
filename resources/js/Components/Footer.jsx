@@ -23,9 +23,7 @@ const Footer = () => {
               We offer cutting-edge tools, secure transactions, and expert support to help you 
               maximize your investments. Join us and start your journey towards financial success today!
             </p>
-            {/* <div className='mt-5 '>
-              <img src={bannerBg} className='h-40 w-full object-cover rounded-md'/>
-            </div> */}
+           
           </div>
         </div>
 
@@ -70,33 +68,21 @@ const Footer = () => {
              <FaEnvelope className={`inline text-sm`} />
             </div>
             <p className='text-[#B6B6B6] transition-all duration-300 hover:text-slate-100 flex-shrink-0'>
-              <a href="mailto:support@trust-platform.com">support@trust-platform.com</a>
+              <a href="mailto:support@trust-platformfinance.com">support@trust-platformfinance.com</a>
             </p>
           </div>
 
-          
-
-          {/* <div className='flex gap-x-3 items-center mb-5'>
-            <div className=' h-9 w-9 rounded-full border-[2px] border-primary flex-shrink-0 flex justify-center items-center'>
-             <FaPhoneAlt className={`inline text-sm`} />
-            </div>
-            <p className='text-[#B6B6B6] transition-all duration-300 hover:text-slate-100'>
-              <a  href="tel:+2348163875505"> +2348163875505</a>
-            </p>
-          </div> */}
          
-         
-         
-          <div>
+          {/* <div>
             <GoogleTranslate />
-          </div>
+          </div> */}
 
         </div>
       </div>
       <div className='font-medium text-[#999] text-center text-sm pb-5'>
           <span className=''>
             All rights reserved. copyright {year} 
-            <Link href='/' className='text-primary'> trust-platform.com</Link>
+            <a href="mailto:support@trust-platformfinance.com" className='text-primary'> support@trust-platformfinance.com</a>
           </span>
       </div>
     </div>

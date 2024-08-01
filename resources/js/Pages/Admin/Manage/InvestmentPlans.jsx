@@ -158,7 +158,7 @@ const InvestmentPlans = ({auth}) => {
                     </div>
                     <div className="mb-5 relative">
                       {error && (<p className="text-sm text-red-500 mb-4">{ error }</p>)}
-                      <button className='w-full inline-flex gap-2 justify-center items-center bg-primaryLight hover:bg-primary rounded-md font-semibold px-2 py-3 transition-all duration-300 ease-in  text-white'>
+                      <button className='w-full inline-flex gap-2 justify-center items-center bg-primary hover:bg-green-700 rounded-md font-semibold px-2 py-3 transition-all duration-300 ease-in  text-white'>
                           {processing ? <LoadingIndicator size={5} />  : <BiSave className="w-6 h-6"  /> }
                           Save Plan
                       </button>

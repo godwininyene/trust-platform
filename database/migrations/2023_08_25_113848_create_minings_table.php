@@ -18,7 +18,7 @@ return new class extends Migration
             $table->double('amount', 10, 2);
             $table->double('profit')->default(0);
             $table->enum('status', ['active', 'completed', 'failed'])->default('active');
-            $table->dateTime('expiry_date');
+            $table->timestamp('expiry_date');
             $table->timestamps();
         });
     }

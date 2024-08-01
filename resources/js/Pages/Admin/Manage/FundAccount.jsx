@@ -7,7 +7,7 @@ import { AiOutlineTransaction } from 'react-icons/ai';
 
 
 const FundAccount = ({user, onBack, onFunded = () => Object}) => {
-    console.log(user)
+    
     let back = () => {
         onBack();
     }
@@ -79,7 +79,7 @@ const FundAccount = ({user, onBack, onFunded = () => Object}) => {
                                         </thead>
                                         <tbody>
                                             {
-                                                (user.bank_accounts.length==0)&&
+                                                (user?.bank_accounts?.length==0)&&
                                                 <tr className="even:bg-teal-50">
                                                     <td className="whitespace-nowrap border py-1 px-4" colSpan="4">
                                                     <div className="flex items-center justify-center gap-5 w-full">
@@ -90,7 +90,7 @@ const FundAccount = ({user, onBack, onFunded = () => Object}) => {
                                             }
                                             {
                                                 
-                                                user.bank_accounts.map((account)=>(
+                                                user?.bank_accounts?.map((account)=>(
                                                     <tr className='border-b'>
                                                         <td className='text-sm'>{account.account_name}</td>
                                                         <td className='text-sm'>{account.account_number}</td>
@@ -167,7 +167,7 @@ const FundAccount = ({user, onBack, onFunded = () => Object}) => {
                                     {message}
                                 </p>}
                                 <div className='text-left'>
-                                    <button disabled={processing} className='inline-flex gap-2 justify-center items-center bg-primaryLight hover:bg-primary rounded-md font-semibold px-4 py-3 transition-all duration-300 ease-in  text-white'>
+                                    <button disabled={processing} className='inline-flex gap-2 justify-center items-center bg-primary hover:bg-green-700 rounded-md font-semibold px-4 py-3 transition-all duration-300 ease-in  text-white'>
                                         {processing ? <>
                                                 <LoadingIndicator className="w-6 h-6"  /> Funding...
                                             </>

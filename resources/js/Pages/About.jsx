@@ -328,7 +328,7 @@ export default function Welcome({ auth }) {
                     </div>
                 </div>
             </section>
-             {/* Section Get Started End */}
+            {/* Section Get Started End */}
 
 
 

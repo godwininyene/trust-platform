@@ -16,6 +16,8 @@ import feature0 from '@/Assets/Images/features01.png';
 import group2 from '@/Assets/Images/refferal_2.png';
 import React from 'react';
 import TestimonialCarousel from '@/Components/TestimonialCarousel';
+import { useEffect, useState } from 'react';
+import moment from 'moment/moment';
 
 
 export default function Welcome({ auth }) {
@@ -36,6 +38,156 @@ export default function Welcome({ auth }) {
     React.useEffect(()=>{
         getPlans();
     },[]);
+
+        const widthrawals =
+        [
+            {
+                id:0,
+                name:"Tyrnan",
+                amount:"$5,200",
+            },
+
+            {
+                id:1,
+                name:"Monae",
+                amount:"$4,899",
+            },
+
+            {
+                id:2,
+                name:"Vladislav",
+                amount:"$500",
+            },
+
+            {
+                id:3,
+                name:"Michael-Jame",
+                amount:"$3,500",
+            },
+
+            {
+                id:4,
+                name:"Yusuf",
+                amount:"$3,000",
+            },
+
+            {
+                id:5,
+                name:"Esteban",
+                amount:"$4,000",
+            },
+
+            {
+                id:6,
+                name:"Brian",
+                amount:"$2,000",
+            },
+
+            {
+                id:7,
+                name:"Dregan",
+                amount:"$2,550",
+            },
+
+            {
+                id:8,
+                name:"Woodard",
+                amount:"$967",
+            },
+
+            {
+                id:9,
+                name:"Lorenz",
+                amount:"$805",
+            },
+        ]
+    ;
+
+
+    const deposits = [
+        {
+            id:0,
+            name:"Alexzander",
+            amount:"$1,932",
+        },
+
+        {
+            id:1,
+            name:"Reegan",
+            amount:"$787",
+        },
+
+        {
+            id:2,
+            name:"Michaella",
+            amount:"$500",
+        },
+
+        {
+            id:3,
+            name:"Andreas",
+            amount:"$700",
+        },
+
+        {
+            id:4,
+            name:"Clinto",
+            amount:"$1,000",
+        },
+
+        {
+            id:5,
+            name:"Mark",
+            amount:"$700",
+        },
+
+        {
+            id:6,
+            name:"Morenio",
+            amount:"$2,000",
+        },
+
+        {
+            id:7,
+            name:"John",
+            amount:"$1,600",
+        },
+
+        {
+            id:8,
+            name:"Marvin",
+            amount:"$2,000",
+        },
+
+        {
+            id:9,
+            name:"Robbi",
+            amount:"$1,000",
+        },
+
+    ]
+
+    const[startIndex, setStartIndex] = useState(0);
+
+    const [displayDeposits, setDisplayDeposits] = useState([]);
+
+    const [displayWithdrawals, setDisplayWithdrawals] = useState([]);
+
+    useEffect(() => {
+        const shuffleDeposits = () => {
+          const shuffled = deposits.sort(() => Math.random() - 0.5);
+          const shuffledWithdrawal = widthrawals.sort(() => Math.random() - 0.5);
+          setDisplayDeposits(shuffled.slice(0, 5));
+          setDisplayWithdrawals(shuffledWithdrawal.slice(0,5));
+        };
+    
+        shuffleDeposits(); // Initial shuffle
+        const interval = setInterval(shuffleDeposits, 4000); // Shuffle every 5 seconds
+    
+        return () => clearInterval(interval); // Cleanup on component unmount
+      }, []);
+
+   
 
     return (
         <BaseLayout banner={<HomeBanner />}>
@@ -402,35 +554,15 @@ export default function Welcome({ auth }) {
                                 Recent Deposits
                             </h1>
 
-                            <div className='flex items-center my-7 border-b pb-2'>
-                                <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>1</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>Alexzander</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>$1,215</div>
-                            </div>
-
-                            <div className='flex items-center my-7 border-b pb-2'>
-                                <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>2</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>Navarro</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>$1,932</div>
-                            </div>
-
-                            <div className='flex items-center my-7 border-b pb-2'>
-                                <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>3</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>Reegan</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>$787</div>
-                            </div>
-
-                            <div className='flex items-center my-7 border-b pb-2'>
-                                <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>4</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>Michaella</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>$500</div>
-                            </div>
-
-                            <div className='flex items-center my-7 border-b pb-2'>
-                                <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>5</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>Andreas</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>$700</div>
-                            </div>
+                            {
+                                displayDeposits.map((item, i)=>(
+                                    <div key={item.id} className='flex items-center my-7 border-b pb-2'>
+                                        <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>{i + 1}</div>
+                                        <div className='text-white px-5 py-2 bg-dark ml-auto'>{item.name}</div>
+                                        <div className='text-white px-5 py-2 bg-dark ml-auto'>{item.amount}</div>
+                                    </div>
+                                ))
+                            }
 
                         </div>
 
@@ -438,36 +570,15 @@ export default function Welcome({ auth }) {
                             <h1 className="text-lg font-semibold mb-4 border-b text-primary">
                                 Recent Withdrawals
                             </h1>
-
-                            <div className='flex items-center my-7 border-b pb-2'>
-                                <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>1</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>Brendon</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>$2,180</div>
-                            </div>
-
-                            <div className='flex items-center my-7 border-b pb-2'>
-                                <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>2</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>Monae</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>$4,899</div>
-                            </div>
-
-                            <div className='flex items-center my-7 border-b pb-2'>
-                                <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>3</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>Vladislav</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>$3,000</div>
-                            </div>
-
-                            <div className='flex items-center my-7 border-b pb-2'>
-                                <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>4</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>Michael-James</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>$3,520</div>
-                            </div>
-
-                            <div className='flex items-center my-7 border-b pb-2'>
-                                <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>5</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>Tyrnan</div>
-                                <div className='text-white px-5 py-2 bg-dark ml-auto'>$5,200</div>
-                            </div>
+                            {
+                                displayWithdrawals.map((item,i)=>(
+                                    <div key={item.id} className='flex items-center my-7 border-b pb-2'>
+                                        <div className='h-10 w-10 rounded-full border-[3px] border-primary flex items-center justify-center text-xl font-black bg-white'>{i + 1}</div>
+                                        <div className='text-white px-5 py-2 bg-dark ml-auto'>{item.name}</div>
+                                        <div className='text-white px-5 py-2 bg-dark-light ml-auto'>{item.amount}</div>
+                                    </div>
+                                ))
+                            }
 
                         </div>
                     </div>
@@ -485,8 +596,8 @@ export default function Welcome({ auth }) {
                                 <h2 className='text-white text-5xl font-black mb-2'>Trust <span className='text-primary'>Platform</span> Trading</h2>
                                 <h3 className='mb-2 text-white font-medium text-2xl'>Skyrocket Your Crypto Trading with Us!</h3>
                                 <div className='mt-12 flex gap-x-3'>
-                                    <Link href='register' className='inline-block text-center font-semibold border border-primary rounded-xl py-4 px-8 transition-all duration-300 bg-primary text-white hover:bg-transparent'>Get Started</Link>
-                                    <Link href='contact-support' className='text-primary  inline-block text-center font-semibold border border-primary rounded-xl py-4 px-8 transition-all duration-300 hover:bg-primary hover:text-black'>Contact Us</Link>
+                                    <Link href='register' className='inline-block text-center text-sm md:text-base font-semibold border border-primary rounded-xl py-2 md:py-4 px-2 md:px-8 transition-all duration-300 bg-primary text-white hover:bg-transparent'>Get Started</Link>
+                                    <Link href='contact-support' className='text-primary  inline-block text-center font-semibold border border-primary rounded-xl  py-2 md:py-4 px-2  md:px-8 transition-all duration-300 hover:bg-primary hover:text-black'>Contact Us</Link>
                                 </div>
 
                             </div>

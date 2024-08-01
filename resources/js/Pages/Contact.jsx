@@ -59,7 +59,7 @@ export default function Welcome({ auth }) {
                             <div className='mb-4 flex flex-col items-center'>
                                 <FaEnvelope className='text-primary text-3xl'/>
                                 <p className='text-[#B6B6B6] mt-2 transition-all duration-300 hover:text-slate-100'>
-                                    <a href="mailto:support@massive-wealthfinance.com">support@trust-platform.com</a>
+                                    <a href="mailto:support@trust-platformfinance.com">support@trust-platformfinance.com</a>
                                 </p>
                             </div>
 

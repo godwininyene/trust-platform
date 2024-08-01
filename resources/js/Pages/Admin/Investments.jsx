@@ -37,6 +37,8 @@ export default function Dashboard({ auth }) {
       fetchStats();
     }, [])
 
+    
+
     return (
         <AuthenticatedLayout
             user={auth.user}
