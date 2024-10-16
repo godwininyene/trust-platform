@@ -81,7 +81,7 @@ class MiningController extends Controller
         try {
         
           
-            echo $today = Carbon::now();
+            $today = Carbon::now();
             
             $mining = Mining::where('status','active')->get();
             foreach($mining as $value){
@@ -93,7 +93,7 @@ class MiningController extends Controller
                     $plan = Plan::where('id',$value->plan_id)->first();
                     $wallet = Wallet::where('user_id', $value->user_id)->first();
                     if ($value->expiry_date <= Carbon::now()) {
-                        return "expired";
+                        
                         $wallet->profit = $wallet->profit + (($plan->percentage  / 100) * $value->amount);
                         $wallet->balance = $wallet->balance + $value->amount + (($plan->percentage  / 100) * $value->amount);
                         $value->profit = (($plan->percentage  / 100) * $value->amount);
@@ -110,7 +110,7 @@ class MiningController extends Controller
                         $wallet->update();
                         // $value->updated_at = Carbon::now();
                         $value->update();
-                        return "not expired";
+                       
                     }
                     Log::channel('cron_jobs')->info(Carbon::now());
                     Log::channel('cron_jobs')->info($wallet);
